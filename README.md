@@ -48,11 +48,22 @@ As long as line 83 is commented out the `props` object correctly shows the `sort
 const { hasNextPage, hasPreviousPage, pageIndex } = pluginStates.page;
 ```
 
-As soon as line 83 and the corresponding markup from line 144 to line 157 is enabled the `props` object is missing the `sort` property.
+<a target="_blank" href="https://github.com/robots4life/shadcn-svelte-data-table/blob/main/src/routes/data-table.svelte#L100">https://github.com/robots4life/shadcn-svelte-data-table/blob/main/src/routes/data-table.svelte#L100</a>
+
+```json
+{
+	"sort": {
+		"order": "asc",
+		"disabled": false
+	}
+}
+```
+
+As soon as line 83 and the corresponding markup from line 144 to line 157 is **enabled** the `props` object is **missing** the `sort` property.
 
 <a target="_blank" href="https://github.com/robots4life/shadcn-svelte-data-table/blob/main/src/routes/data-table.svelte#L144-L157">https://github.com/robots4life/shadcn-svelte-data-table/blob/main/src/routes/data-table.svelte#L144-L157</a>
 
-Because of this the condition to check for the sort order from line 104 to 108 does not work.
+Because of this **the condition to check for the sort order** from line 104 to 108 **does not work**.
 
 <a target="_blank" href="https://github.com/robots4life/shadcn-svelte-data-table/blob/main/src/routes/data-table.svelte#L104-L108">https://github.com/robots4life/shadcn-svelte-data-table/blob/main/src/routes/data-table.svelte#L104-L108</a>
 
