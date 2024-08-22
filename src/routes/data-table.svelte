@@ -80,7 +80,11 @@
 	// add pagination states
 	// the props object only has the sort properties if this line is commented out
 	// enable the pagination and see the props object not having the sort property any more
-	// const { hasNextPage, hasPreviousPage, pageIndex } = pluginStates.page;
+
+	// solution
+	// pageCount and pageSize must be included even though they are not used
+	// only if pageCount and pageSize are included will sort work correctly
+	const { hasNextPage, hasPreviousPage, pageIndex, pageCount, pageSize } = pluginStates.page;
 
 	// add sort states
 	const { sortKeys } = pluginStates.sort;
@@ -141,7 +145,7 @@
 		</Table.Body>
 	</Table.Root>
 	<!-- enable the pagination and see the props object not having the sort property any more -->
-	<!-- <div class="flex items-center justify-end space-x-4 py-4">
+	<div class="flex items-center justify-end space-x-4 py-4">
 		<Button
 			variant="outline"
 			size="sm"
@@ -154,7 +158,7 @@
 			disabled={!$hasNextPage}
 			on:click={() => ($pageIndex = $pageIndex + 1)}>Next</Button
 		>
-	</div> -->
+	</div>
 </div>
 
 <pre>{JSON.stringify($sortKeys, null, 2)}</pre>

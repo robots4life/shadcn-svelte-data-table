@@ -74,3 +74,37 @@ Because of this **the condition to check for the sort order** from line 104 to 1
 	<ArrowDown class={'ml-2 h-4 w-4'} />
 {/if}
 ```
+
+#### Solution
+
+<a target="_blank" href="https://github.com/robots4life/shadcn-svelte-data-table/blob/main/src/routes/data-table.svelte#L85-L87">https://github.com/robots4life/shadcn-svelte-data-table/blob/main/src/routes/data-table.svelte#L85-L87</a>
+
+```ts
+// pageCount and pageSize must be included even though they are not used
+// only if pageCount and pageSize are included will sort work correctly
+const { hasNextPage, hasPreviousPage, pageIndex, pageCount, pageSize } = pluginStates.page;
+```
+
+#### Shadcn-Svelte Data Table Documentation
+
+<a target="_blank" href="https://shadcn-svelte.com/docs/components/data-table#enable-the-addpagination-plugin">https://shadcn-svelte.com/docs/components/data-table#enable-the-addpagination-plugin</a>
+
+Ideally when introducing pagination to the Date Table in the docs this could be pointed out.
+
+> In the next step we are going to add sorting to the data table, for pagination and sorting to work correctly you will have to modify `pluginStates.page`, more about this in the next step.
+
+```ts
+const { hasNextPage, hasPreviousPage, pageIndex, pageCount, pageSize } = pluginStates.page;
+```
+
+<a target="_blank" href="https://shadcn-svelte.com/docs/components/data-table#make-header-cell-sortable">https://shadcn-svelte.com/docs/components/data-table#make-header-cell-sortable</a>
+
+> If you like to use sorting with an icon on condition of the sort order and you have pagination in place you will need to add `pageCount` and `pageSize` to `pluginStates.page`.
+
+```svelte
+{#if props.sort.order === 'asc'}
+	<ArrowUp class={'ml-2 h-4 w-4'} />
+{:else}
+	<ArrowDown class={'ml-2 h-4 w-4'} />
+{/if}
+```
